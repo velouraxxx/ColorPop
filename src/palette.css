@@ -1,0 +1,21 @@
+/* Exact colors from color_palette_hex_codes(1).txt. Golden Amber intentionally excluded. */
+:root {
+  --cp-cobalt: #020e8b;
+  --cp-azure: #018df2;
+  --cp-periwinkle: #8db2f6;
+  --cp-orange: #f93f02;
+  --cp-pink: #ff007e;
+  --cp-bubblegum: #ff7eb1;
+  --cp-peach: #ffcda8;
+  --cp-blush: #ff9786;
+  --cp-raspberry: #dc0e69;
+  --cp-magenta: #aa015b;
+  --cp-orchid: #b333a8;
+  --cp-lavender: #b37bbe;
+  --cp-coral: #fc5e42;
+  --cp-watermelon: #f3524e;
+  --cp-mint: #39b99f;
+  --cp-teal: #048074;
+  --cp-navy: #020a25;
+  --cp-white: #faf7f2;
+}
