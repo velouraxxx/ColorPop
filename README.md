@@ -68,3 +68,7 @@ The app has been implemented and tested locally; it is not deployed to a permane
 The original source homepage is preserved in the supplied ZIP; its decorative hero is retained. The active exact theme is in `src/palette.css`; Golden Amber is intentionally excluded according to the no-yellow instruction. Secondary screens share the same tokens. See `docs/previews` for actual app renders.
 
 3D relationship maps/timelines, image generation, plugins, streaming, deletion, password reset, and JSON backup restoration are not implemented in this increment. No unavailable feature is presented as live functionality.
+
+## Memory and plugins update
+
+The first per-chat memory, instruction-plugin and CSS 3D timeline implementation is available. See [setup and limitations](docs/MEMORY_PLUGINS.md). This supersedes the earlier statement that plugins and timelines are entirely unimplemented. Hosting is still pending.

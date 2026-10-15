@@ -1,3 +1,4 @@
+import StoryMemoryPanel from "./StoryMemory";
 import { learnPreferences } from "./preferences";
 import {
   useState,
@@ -942,6 +943,7 @@ function NewChat({ items, save, notify }: Shared) {
               <label className="check" key={i.id}>
                 <input
                   type="checkbox"
+                  disabled={!lore.includes(i.id) && lore.length >= 4}
                   checked={lore.includes(i.id)}
                   onChange={(e) =>
                     setLore(
@@ -1102,6 +1104,7 @@ function Chat({
         <ChevronLeft size={16} />
         All chats
       </Link>
+      <StoryMemoryPanel key={c.id} chat={c} items={items} save={save} notify={notify} disabled={busy || !!pending} />
       <section className="chat-shell panel">
         <header className="chat-header">
           <Gem index={3} />
@@ -1140,6 +1143,7 @@ function Chat({
             <article key={m.id} className={`message ${m.role}`}>
               <div className="message-meta">
                 <strong>{m.name}</strong>
+                <button className="save-heart" disabled={busy || (c.data.memories?.length || 0) >= 100 || c.data.memories?.some(x => x.sourceMessageId === m.id)} onClick={() => save({...c, data: {...c.data, memories: [...(c.data.memories || []), {id: crypto.randomUUID(), title: m.content.slice(0,80), detail: m.content.slice(0,1000), kind: "event", storyTime: "", createdAt: new Date().toISOString(), sourceMessageId:m.id}]}}).catch(e => notify(e.message))}>Remember</button>
                 <button
                   className="save-heart"
                   aria-label={`${m.saved ? "Unsave" : "Save"} message`}

@@ -7,7 +7,11 @@ export interface Message {
   saved?: boolean;
   createdAt: string;
 }
+export interface StoryMemory { id: string; title: string; detail: string; kind: "event" | "fact" | "relationship"; storyTime: string; createdAt: string; sourceMessageId?: string; }
+export interface ChatPlugin { id: string; name: string; instructions: string; enabled: boolean; }
 export interface Data {
+  memories?: StoryMemory[];
+  plugins?: ChatPlugin[];
   name: string;
   description?: string;
   age?: string;

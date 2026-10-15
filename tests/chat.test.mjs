@@ -61,3 +61,10 @@ test("API rejects unauthenticated requests and never exposes OpenAI secrets", as
     server.kill();
   }
 });
+test('chat context includes reviewed memory and enabled plugins, caps lorebooks', () => {
+ const chat={data:{messages:[],memories:[{title:'Promise',detail:'Meet at the station',storyTime:'Day 2',kind:'event'}],plugins:[{name:'Tone',instructions:'Use short paragraphs',enabled:true},{name:'Off',instructions:'DISABLED_PLUGIN_SENTINEL',enabled:false}]}};
+ const r=buildRequest(chat,[],null,Array.from({length:5},(_,i)=>({data:{name:`LORE_SENTINEL_${i}`}})),'narrator','reply','example');
+ assert.match(r.instructions,/Meet at the station/);
+ assert.match(r.instructions,/Use short paragraphs/);
+ assert.doesNotMatch(r.instructions,/DISABLED_PLUGIN_SENTINEL|LORE_SENTINEL_4/);
+});
